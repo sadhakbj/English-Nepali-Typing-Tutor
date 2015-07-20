@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta charset="ISO-8859-1">
 	<title>Making Some Sort of Typer</title>
 	<style type="text/css">
 	*{
@@ -18,9 +19,8 @@
 		.result{
 			width: auto;
 			height: auto;
-			/*font-size: 6px;*/
 			background: cyan;
-			color: #dadada;
+			
 		}
 
 		.this{
@@ -34,9 +34,10 @@
 </head>
 <body>
 	<div class = "result">
-			Total Words: <p id="totalWords"> </p>
-			Correct Words: <p id = "correct"> </p>
-			Errors: <p id="accuracy"> </p>
+			Total Words: <span id="totalWords"> </span> <br>
+			Correct Words: <span id = "correct"> </span> <br>
+			Errors: <span id="err"> </span> <br>
+			Accuracy: <span id = "accuracy"></span>
 		</div>
 
 
@@ -69,14 +70,18 @@
 			{
 				
 				matched = 0;
+				error = 0;
 				var tags = document.getElementsByClassName('this')[0];
 
 				var deleteid  = document.getElementById('thisClass');
 
 				tags.removeChild(deleteid);
+
+				
 						
 
 		    	generateWords();
+		    	updateResult(matched , error , word.length);
 
 			}
 
@@ -86,10 +91,12 @@
 		function generateWords() {
 
 			count = 0;
-			var lessons = ["aa jj hu hu hu ww ee rr ww rr" , "asd asd asdf jkl jkl as as jk jk" , "my my my name is" , "i can do this"];
-			var num = getRandomNumber(0 , 3);
+			var lessons = ["aa jj hu hu hu ww ee rr ww rr" , "asd asd asdf jkl jkl as as jk jk" , "my my my name is" , "i can do this" ,"मेरो नाम बिजाय हो" ,"नेपाल"];
+			var max = lessons.length;
 
-			alert(count);
+			var num = getRandomNumber(0 , max);
+
+			alert(num);
 			console.log(num);
 			word = lessons[num];
 
@@ -114,6 +121,7 @@
 				
 			}
 
+			//this piece of code will highlight the first element
 			var cnt = 0;
 			highlight(cnt);
 
@@ -122,8 +130,10 @@
 		window.onload = function(){
 
 			generateWords();
+			updateResult(matched , error , word.length);
 
-			
+			document.getElementById('totalWords').innerHTML = word.length;
+
 
 						
 
@@ -144,8 +154,27 @@
 				get.style.background = 'cyan';
 				}
 				
-			};
+				};
+
+			function updateResult(matched , errors , totalWords){
+				
+				var correctSpan = document.getElementById('correct');
+				var errorSpan = document.getElementById('err');
+				var acc = document.getElementById('accuracy');
+
+				correctSpan.innerHTML = matched;
+				errorSpan.innerHTML = error;
+
+				//lets calculate the accuracy::
+
+				var accc = ((matched-errors)/totalWords)*100;
+				acc.innerHTML = accc;
+				
+				
+			}
 		
+
+
 
 		window.onkeydown = function(event){
 
@@ -166,7 +195,7 @@
 			//we need to convert the value from the spans to variable first::
 
 			var cnt = count+1;
-			highlight(cnt)
+			highlight(cnt);
 
 
 			var check = word.charAt(count);		
@@ -180,6 +209,7 @@
 					matched++;
 					console.log('total matched' +matched);
 					count++;
+					updateResult(matched , error , word.length);
 					checkNewWord();
 					
 
@@ -193,6 +223,7 @@
 					error++;
 					console.log('total errors are' + error);
 					count++;
+					updateResult(matched , error , word.length);
 					checkNewWord();
 
 
@@ -203,10 +234,6 @@
 		}
 
 	}
-
-
-		// generateWords();
-
 		})();
 	</script>
 

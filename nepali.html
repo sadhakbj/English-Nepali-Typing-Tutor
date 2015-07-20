@@ -90,7 +90,7 @@
 		function generateWords() {
 
 			count = 0;
-			var lessons = ["क क क ख ख ख " , "काका मेरा राम्रा काका" , "जय श्री राम जय श्री राम जय श्री राम " , "सीता राम सीता राम"];
+			var lessons = ["क क क ख ख ख " , "काका मेरा राम्रा काका" , "जय श्री राम जय श्री राम जय श्री राम " , "सीता राम सीता राम", "ब ब ब क क क क म म म व प ि ि स व प ि स स बब कक"];
 			var max = lessons.length;
 
 			var num = getRandomNumber(0 , max);
@@ -183,6 +183,9 @@
 			var cnt = count+1;
 			highlight(cnt);				   				
 
+
+					if((hh > 2308 && hh < 2417) || hh === 32)			
+
 				    if(hh === word.charCodeAt(count))
 				    {	
 				    //this is matched
@@ -196,7 +199,7 @@
 					checkNewWord();				
 
 
-				}
+						}
 				    else
 				    	{
 					console.log('not matched');
@@ -212,6 +215,8 @@
 				}
 				    
 				}
+
+			
 				
 		})();
 	</script>
