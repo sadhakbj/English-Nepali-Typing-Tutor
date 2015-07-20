@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Making Some Sort of Typer</title>
+	<style type="text/css">
+	*{
+		margin , padding: 0px;
+		
+		}
+		.wrapper{
+			margin: 0 auto;
+			border: 1px solid red;
+			height: auto;
+			width: auto;
+		}
+
+		.result{
+			width: auto;
+			height: auto;
+			background: cyan;
+			
+		}
+
+		.this{
+			//this is holder for them
+		}
+
+
+
+	</style>
+
+</head>
+<body>
+	<div class = "result">
+			Total Words: <span id="totalWords"> </span> <br>
+			Correct Words: <span id = "correct"> </span> <br>
+			Errors: <span id="err"> </span> <br>
+			Accuracy: <span id = "accuracy"></span>
+		</div>
+
+
+	<p class ="this" id="lessonClass"> </p>
+
+
+	<script type="text/javascript">
+	;(function(){
+		'use strict';
+
+		 var count = 0;
+	 	 var error = 0;
+	 	 var word;
+	 	 var matched = 0;
+	 	 
+
+	 	 function getRandomNumber(min, max) {
+		   
+		    var ran = Math.floor(Math.random() * (max - min) + min);
+		    // console.log(ran);
+		     return ran;
+		};
+
+
+		//this function will check if we need the new word::
+
+		function checkNewWord(){
+
+			if(count === word.length)
+			{
+				
+				matched = 0;
+				error = 0;
+				var tags = document.getElementsByClassName('this')[0];
+
+				var deleteid  = document.getElementById('thisClass');
+
+				tags.removeChild(deleteid);
+
+				
+						
+
+		    	generateWords();
+		    	updateResult(matched , error , word.length);
+
+			}
+
+		};
+
+
+		function generateWords() {
+
+			count = 0;
+			var lessons = ["क क क ख ख ख " , "काका मेरा राम्रा काका" , "जय श्री राम जय श्री राम जय श्री राम " , "सीता राम सीता राम"];
+			var max = lessons.length;
+
+			var num = getRandomNumber(0 , max);
+
+			// alert(num);
+			console.log(num);
+			word = lessons[num];
+
+			
+			
+			// here goes the core code for displaying the contents got from the array;
+
+			var tags = document.getElementsByClassName('this')[0];
+
+			var newDiv = document.createElement('div');
+				newDiv.setAttribute('id' , 'thisClass');
+				tags.appendChild(newDiv);
+
+
+			var tags = document.getElementsByClassName('this')[0];
+			
+			for(var i = 0 ; i < word.length ; i++)
+			{	var spans = document.createElement('span');
+				spans.setAttribute('id' , 'span'+i);
+				spans.innerHTML = word[i];
+				newDiv.appendChild(spans);
+				
+			}
+
+			//this piece of code will highlight the first element
+			var cnt = 0;
+			highlight(cnt);
+
+		};
+
+		window.onload = function(){
+
+			generateWords();
+			updateResult(matched , error , word.length);
+
+			document.getElementById('totalWords').innerHTML = word.length;
+
+
+						
+
+			
+
+			// console.log(word);
+
+				};
+
+
+				function highlight(cnt){
+
+				console.log('count is' +count);
+				console.log('cnt is' , +cnt);
+				if(cnt < word.length)
+				{
+				var get = document.getElementById('span'+ cnt);
+				get.style.background = 'cyan';
+				}
+				
+				};
+
+			function updateResult(matched , errors , totalWords){
+				
+				var correctSpan = document.getElementById('correct');
+				var errorSpan = document.getElementById('err');
+				var acc = document.getElementById('accuracy');
+
+				correctSpan.innerHTML = matched;
+				errorSpan.innerHTML = error;
+
+				//lets calculate the accuracy::
+
+				var accc = ((matched-errors)/totalWords)*100;
+				acc.innerHTML = accc;
+				
+				
+			}
+		
+
+
+
+		window.onkeypress = function(event){
+
+			console.log('curent count is'+count);	
+    		var hh = event.which || event.keyCode;		
+    		//this is for highlighting the next
+			var cnt = count+1;
+			highlight(cnt);				   				
+
+				    if(hh === word.charCodeAt(count))
+				    {	
+				    //this is matched
+					var getSpan = document.getElementById('span'+count);
+					getSpan.style.color = 'blue';
+					getSpan.style.background = 'none';
+					matched++;
+					console.log('total matched' +matched);
+					count++;
+					updateResult(matched , error , word.length);
+					checkNewWord();				
+
+
+				}
+				    else
+				    	{
+					console.log('not matched');
+					var getSpan = document.getElementById('span'+count);
+					getSpan.style.background = 'red';
+					error++;
+					console.log('total errors are' + error);
+					count++;
+					updateResult(matched , error , word.length);
+					checkNewWord();
+
+
+				}
+				    
+				}
+				
+		})();
+	</script>
+
+	
+</body>
+</html>
