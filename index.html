@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin , padding: 0px;
+		
+		}
+		.wrapper{
+			margin: 0 auto;
+			border: 1px solid red;
+			height: auto;
+			width: auto;
+		}
+
+		.result{
+			width: auto;
+			height: auto;
+			/*font-size: 6px;*/
+			background: cyan;
+			color: #dadada;
+		}
+
+		.this{
+			//this is holder for them
+		}
+
+
+
+	</style>
+
+</head>
+<body>
+	<div class = "result">
+			Total Words: <p id="totalWords"> </p>
+			Correct Words: <p id = "correct"> </p>
+			Errors: <p id="accuracy"> </p>
+		</div>
+
+
+	<p class ="this" id="lessonClass"> </p>
+
+
+	<script type="text/javascript">
+	;(function(){
+		'use strict';
+
+		 var count = 0;
+	 	 var error = 0;
+	 	 var word;
+	 	 var matched = 0;
+	 	 
+
+	 	 function getRandomNumber(min, max) {
+		   
+		    var ran = Math.floor(Math.random() * (max - min) + min);
+		    // console.log(ran);
+		     return ran;
+		};
+
+
+		//this function will check if we need the new word::
+
+		function checkNewWord(){
+
+			if(count+1 === word.length)
+			{
+				
+				matched = 0;
+				var tags = document.getElementsByClassName('this')[0];
+
+				var deleteid  = document.getElementById('thisClass');
+
+				tags.removeChild(deleteid);
+						
+
+		    	generateWords();
+			}
+
+		};
+
+
+		function generateWords() {
+
+			count = 0;
+			var lessons = ["aa jj hu hu hu ww ee rr ww rr" , "asd asd asdf jkl jkl as as jk jk" , "my my my name is" , "i can do this"];
+			var num = getRandomNumber(0 , 4);
+
+			alert(count);
+			console.log(num);
+			word = lessons[num];
+			
+			
+			// here goes the core code for displaying the contents got from the array;
+
+			var tags = document.getElementsByClassName('this')[0];
+
+			var newDiv = document.createElement('div');
+				newDiv.setAttribute('id' , 'thisClass');
+				tags.appendChild(newDiv);
+
+
+			var tags = document.getElementsByClassName('this')[0];
+			
+			for(var i = 0 ; i < word.length ; i++)
+			{	var spans = document.createElement('span');
+				spans.setAttribute('id' , 'span'+i);
+				spans.innerHTML = word[i];
+				newDiv.appendChild(spans);
+			}
+
+		};
+
+		window.onload = function(){
+			generateWords();
+		};
+		
+
+		window.onkeydown = function(event){
+
+		var hh = event.which;
+		if((hh > 47 && hh<58 ) || (hh > 64 && hh<91) || (hh > 96 && hh<123) || hh == 32)
+		{		
+			//we are now validating::
+			console.log(event.which);
+			var inputToNum = String.fromCharCode(hh).toLowerCase();
+			console.log(inputToNum);
+
+			// alert(word);
+			// alert(count);
+
+
+			//we need to convert the value from the spans to variable first::
+			var check = word.charAt(count);
+			
+			if(inputToNum === check)
+				{	//this is matched
+					var getSpan = document.getElementById('span'+count);
+					getSpan.style.color = 'blue';
+					matched++;
+					console.log('total matched' +matched);
+					checkNewWord();
+
+
+				}
+			else
+				{
+					console.log('not matched');
+					var getSpan = document.getElementById('span'+count);
+					getSpan.style.background = 'red';
+					error++;
+					console.log('total errors are' + error);
+					checkNewWord();
+
+				}
+			count++;
+
+
+		}
+
+	}
+
+
+		// generateWords();
+
+		})();
+	</script>
+
+	
+</body>
+</html>
