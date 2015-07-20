@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Making Some Sort of Typer</title>
 	<style type="text/css">
 	*{
 		margin , padding: 0px;
@@ -65,7 +65,7 @@
 
 		function checkNewWord(){
 
-			if(count+1 === word.length)
+			if(count === word.length)
 			{
 				
 				matched = 0;
@@ -77,6 +77,7 @@
 						
 
 		    	generateWords();
+
 			}
 
 		};
@@ -86,7 +87,7 @@
 
 			count = 0;
 			var lessons = ["aa jj hu hu hu ww ee rr ww rr" , "asd asd asdf jkl jkl as as jk jk" , "my my my name is" , "i can do this"];
-			var num = getRandomNumber(0 , 4);
+			var num = getRandomNumber(0 , 3);
 
 			alert(count);
 			console.log(num);
@@ -109,16 +110,26 @@
 				spans.setAttribute('id' , 'span'+i);
 				spans.innerHTML = word[i];
 				newDiv.appendChild(spans);
+				
 			}
+
+			console.log('inside generate'+count);
 
 		};
 
 		window.onload = function(){
+
 			generateWords();
-		};
+
+
+			// console.log(word);
+
+				};
 		
 
 		window.onkeydown = function(event){
+
+			console.log('curent count is'+count);
 
 		var hh = event.which;
 		if((hh > 47 && hh<58 ) || (hh > 64 && hh<91) || (hh > 96 && hh<123) || hh == 32)
@@ -133,15 +144,22 @@
 
 
 			//we need to convert the value from the spans to variable first::
+
+
+
 			var check = word.charAt(count);
 			
+			 
+
 			if(inputToNum === check)
 				{	//this is matched
 					var getSpan = document.getElementById('span'+count);
 					getSpan.style.color = 'blue';
 					matched++;
 					console.log('total matched' +matched);
+					count++;
 					checkNewWord();
+					
 
 
 				}
@@ -152,10 +170,12 @@
 					getSpan.style.background = 'red';
 					error++;
 					console.log('total errors are' + error);
+					count++;
 					checkNewWord();
+					
 
 				}
-			count++;
+			
 
 
 		}
