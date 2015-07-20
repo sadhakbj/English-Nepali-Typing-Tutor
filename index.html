@@ -92,6 +92,7 @@
 			alert(count);
 			console.log(num);
 			word = lessons[num];
+
 			
 			
 			// here goes the core code for displaying the contents got from the array;
@@ -113,7 +114,8 @@
 				
 			}
 
-			console.log('inside generate'+count);
+			var cnt = 0;
+			highlight(cnt);
 
 		};
 
@@ -121,10 +123,28 @@
 
 			generateWords();
 
+			
+
+						
+
+			
 
 			// console.log(word);
 
 				};
+
+
+				function highlight(cnt){
+
+				console.log('count is' +count);
+				console.log('cnt is' , +cnt);
+				if(cnt < word.length)
+				{
+				var get = document.getElementById('span'+ cnt);
+				get.style.background = 'cyan';
+				}
+				
+			};
 		
 
 		window.onkeydown = function(event){
@@ -145,16 +165,18 @@
 
 			//we need to convert the value from the spans to variable first::
 
+			var cnt = count+1;
+			highlight(cnt)
 
 
-			var check = word.charAt(count);
-			
+			var check = word.charAt(count);		
 			 
 
 			if(inputToNum === check)
 				{	//this is matched
 					var getSpan = document.getElementById('span'+count);
 					getSpan.style.color = 'blue';
+					getSpan.style.background = 'none';
 					matched++;
 					console.log('total matched' +matched);
 					count++;
@@ -172,7 +194,7 @@
 					console.log('total errors are' + error);
 					count++;
 					checkNewWord();
-					
+
 
 				}
 			
