@@ -90,7 +90,7 @@
 		function generateWords() {
 
 			count = 0;
-			var lessons = ["क क क ख ख ख " , "काका मेरा राम्रा काका" , "जय श्री राम जय श्री राम जय श्री राम " , "सीता राम सीता राम", "ब ब ब क क क क म म म व प ि ि स व प ि स स बब कक"];
+			var lessons = ["क क क ख ख ख " , "१ १ २ २ २ ३ ४ ५ ६" , "काका मेरा राम्रा काका" , "जय श्री राम जय श्री राम जय श्री राम " , "सीता राम सीता राम", "ब ब ब क क क क म म म व प ि ि स व प ि स स बब कक"];
 			var max = lessons.length;
 
 			var num = getRandomNumber(0 , max);
@@ -131,7 +131,7 @@
 			generateWords();
 			updateResult(matched , error , word.length);
 
-			document.getElementById('totalWords').innerHTML = word.length;
+			
 
 
 						
@@ -156,6 +156,8 @@
 				};
 
 			function updateResult(matched , errors , totalWords){
+
+				document.getElementById('totalWords').innerHTML = totalWords;
 				
 				var correctSpan = document.getElementById('correct');
 				var errorSpan = document.getElementById('err');
@@ -167,7 +169,7 @@
 				//lets calculate the accuracy::
 
 				var accc = ((matched-errors)/totalWords)*100;
-				acc.innerHTML = accc;
+				acc.innerHTML = accc.toFixed(2)+" %";
 				
 				
 			}

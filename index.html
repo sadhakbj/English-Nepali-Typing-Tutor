@@ -9,22 +9,127 @@
 		margin , padding: 0px;
 		
 		}
+
+		body{
+
+			background: cyan;
+
+		}
 		.wrapper{
 			margin: 0 auto;
 			border: 1px solid red;
-			height: auto;
-			width: auto;
-		}
-
-		.result{
-			width: auto;
-			height: auto;
-			background: cyan;
+			width: 940px;
+			height: 600px;			
 			
 		}
 
+		.header{
+			padding: 0px;
+			margin: 0px;
+			width: auto;
+			height: 70px;
+			background:#333;
+
+			color: white;
+			border-radius: 20px;
+		}
+
+		.logo{
+			float: left;
+			line-height:  70px;
+			font-size: 40px;
+			font-family: Brush Script MT;
+			margin-left: 20px;
+			margin-right: 20px; 
+			padding-right: 20px;
+			border-right: 1px solid white;
+			text-decoration: none;
+			color: #999;
+		}
+
+		.logo:hover{
+			color: white;
+			transition: background 0.7s linear 0s , color 0.7s linear 0s;
+		}
+
+		
+
+		.menus{
+			background: none;
+			margin-left: 10px;
+			margin-right: 10px;
+			font-size: 17px;
+			font-family:  Arial , Helvetica , sans-serif;
+			text-align: center;
+			display: block;
+			float: left;
+			padding-left: 10px;
+			padding-right: 10px;
+			margin-top: 20px;
+			line-height: 40px;
+			min-width: 100px;
+			height: 40px;	
+			text-decoration: none;
+			color: #999;
+		
+
+		}
+
+		.menus:hover{
+			/*background: #27A2E8;*/
+			background: #6F9A00;
+			border-radius: 10px;
+			color: white;
+			transition: background 0.7s linear 0s , color 0.7s linear 0s;
+
+		}
+
+		.result{
+			
+			width: 640px;
+			height: 40px;
+			margin: 0px auto;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			border-radius: 10px;
+			background: #333;
+			opacity: 0.8;
+			color: #999;
+			line-height: 40px;
+			
+			
+			
+		}
+		
+		li{
+			list-style: none;
+			float: left;
+			padding-left: 15px;
+			padding-right: 15px;
+			}
+
+		.list{
+			//we will just change the things on hover
+			}
+
+		.list:hover{
+			background: #6F9A00;
+			color: white;
+			transition: background 0.7s linear 0s , color 0.7s linear 0s;
+
+		}
+
 		.this{
-			//this is holder for them
+			// main holder which is holding the typing space i will make it advanced now wait for a while
+			margin-top: 20px;
+			background-color: white;
+			min-height: 60px;
+			border-radius: 15px;
+			font-size: 30px;
+			color: #4f4f4f;
+			padding: 20px;
+			text-align: center;
+
 		}
 
 
@@ -33,15 +138,36 @@
 
 </head>
 <body>
+	<div class = "wrapper">
+		<div class ="header">
+
+			<a class = "logo" href="https://www.facebook.com/sadhakbj" title="Bijaya Prasad Kuikel"> Prasad </a>
+			
+			<a href = "#" class = "menus"> Nepali Typing </a>
+			<a  href= "#"class = "menus"> Game </a>
+			<a  href= "https://github.com/sadhakbj/Typing" class = "menus"> Fork on GitHub </a>
+
+
+			
+		</div>
 	<div class = "result">
-			Total Words: <span id="totalWords"> </span> <br>
-			Correct Words: <span id = "correct"> </span> <br>
-			Errors: <span id="err"> </span> <br>
-			Accuracy: <span id = "accuracy"></span>
+			<ul>
+				
+			<li class = "list">Characters: <span id="totalWords"> </span> </li>
+			<li class = "list"> Correct: <span id = "correct"> </span>  </li>
+			<li class = "list"> Errors: <span id="err"> </span>  </li>
+			<li class = "list"> Accuracy: <span id = "accuracy"></span> </li>
+			<li class = "list"> Time: <span id="time" class = "time"> 0 </span> secs</li>
+
+		</ul>
+
+		
 		</div>
 
 
-	<p class ="this" id="lessonClass"> </p>
+	<div class ="this" id="lessonClass"> <div>
+
+</div>
 
 
 	<script type="text/javascript">
@@ -52,34 +178,28 @@
 	 	 var error = 0;
 	 	 var word;
 	 	 var matched = 0;
+	 	 var interval;
 	 	 
 
-	 	 function getRandomNumber(min, max) {
-		   
+	 	 function getRandomNumber(min, max) {		   
 		    var ran = Math.floor(Math.random() * (max - min) + min);
 		    // console.log(ran);
 		     return ran;
-		};
+				};
 
 
-		//this function will check if we need the new word::
-
-		function checkNewWord(){
-
+		 //this function will check if we need the new word::
+		 function checkNewWord(){
 			if(count === word.length)
-			{
-				
+			{	
+				//we will reset the value of matched and error to 0 again			
 				matched = 0;
 				error = 0;
 				var tags = document.getElementsByClassName('this')[0];
-
+				//delete the class thisclass
 				var deleteid  = document.getElementById('thisClass');
-
-				tags.removeChild(deleteid);
-
-				
-						
-
+				tags.removeChild(deleteid);						
+				//again lets generate words means we will create the above deleted class again
 		    	generateWords();
 		    	updateResult(matched , error , word.length);
 
@@ -87,24 +207,27 @@
 
 		};
 
-
+		//this function is main one which generates the lessons/ words
 		function generateWords() {
 
 			count = 0;
-			var lessons = ["aa jj hu hu hu ww ee rr ww rr" , "asd asd asdf jkl jkl as as jk jk" , "my my my name is" , "i can do this" ,"मेरो नाम बिजाय हो" ,"नेपाल"];
+			//from this array we select any of these... this is temporary solution in future i may think new ideas ;)
+			var lessons = ["aa jj hu hu hu ww ee rr ww rr" ,
+			"main holder which is holding the typing space yes main holder which is holding the typing space i will make it advanced now wait for a while i will make it advanced now wait for a while", "asd asd asdf jkl jkl as as jk jk" , "my my my name is" , "i can do this"];
 			var max = lessons.length;
-
+			//we need to get random number from the above array so pass the parameters
 			var num = getRandomNumber(0 , max);
 
 			alert(num);
 			console.log(num);
 			word = lessons[num];
-
 			
 			
 			// here goes the core code for displaying the contents got from the array;
 
 			var tags = document.getElementsByClassName('this')[0];
+				tags.style.background = 'white';
+
 
 			var newDiv = document.createElement('div');
 				newDiv.setAttribute('id' , 'thisClass');
@@ -128,26 +251,23 @@
 		};
 
 		window.onload = function(){
-
+			//on loading the main window generatewords and update the result means show matched = 0 , error = 0 and accuracy
 			generateWords();
 			updateResult(matched , error , word.length);
+			updateTime();
 
-			document.getElementById('totalWords').innerHTML = word.length;
-
-
-						
-
-			
 
 			// console.log(word);
 
 				};
 
-
-				function highlight(cnt){
-
+				//this function is used to highlight .. it will give hint for which letter to type
+			function highlight(cnt){
+				//check on consoles you may see something interesting :P	
 				console.log('count is' +count);
 				console.log('cnt is' , +cnt);
+				//this if to check .. if the cnt we passed has reached to word length .. if it has not
+				//then only we will highlight the next word to be typed
 				if(cnt < word.length)
 				{
 				var get = document.getElementById('span'+ cnt);
@@ -156,8 +276,10 @@
 				
 				};
 
+			//We will the updated results .. how many characters matched .. errors etc
 			function updateResult(matched , errors , totalWords){
-				
+
+				document.getElementById('totalWords').innerHTML = totalWords;
 				var correctSpan = document.getElementById('correct');
 				var errorSpan = document.getElementById('err');
 				var acc = document.getElementById('accuracy');
@@ -168,17 +290,26 @@
 				//lets calculate the accuracy::
 
 				var accc = ((matched-errors)/totalWords)*100;
-				acc.innerHTML = accc;
-				
-				
+				//this toFixed(2) means we shall show upto fix 2
+				acc.innerHTML = accc.toFixed(2)+" %";
 			}
 		
+			//there is a timer which is showing the time in seconds brother just increment the value
+			function updateTime(){
+				if (interval === undefined) {
+			    interval = window.setInterval(function(){
+			    var time = document.getElementsByClassName('time')[0];
+			    time.innerHTML = Number(time.innerHTML) +1;
+			    },1000),+"secs";
+
+			};
+			}
 
 
-
+		//the very important part of the project .. on key down ..	
 		window.onkeydown = function(event){
 
-			console.log('curent count is'+count);
+		
 
 		var hh = event.which;
 		if((hh > 47 && hh<58 ) || (hh > 64 && hh<91) || (hh > 96 && hh<123) || hh == 32)
@@ -220,6 +351,7 @@
 					console.log('not matched');
 					var getSpan = document.getElementById('span'+count);
 					getSpan.style.background = 'red';
+					getSpan.style.color = 'white';
 					error++;
 					console.log('total errors are' + error);
 					count++;
