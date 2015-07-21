@@ -4,7 +4,9 @@
 	<meta charset="UTF-8">
 	<meta charset="ISO-8859-1">
 	<title>Making Some Sort of Typer</title>
+	<link rel="stylesheet" type="text/css" href="css/keyboard.css">
 	<style type="text/css">
+
 	*{
 		margin , padding: 0px;
 		
@@ -143,7 +145,7 @@
 
 			<a class = "logo" href="https://www.facebook.com/sadhakbj" title="Bijaya Prasad Kuikel"> Prasad </a>
 			
-			<a href = "#" class = "menus"> Nepali Typing </a>
+			<a href = "nepali.html" class = "menus"> Nepali Typing </a>
 			<a  href= "#"class = "menus"> Game </a>
 			<a  href= "https://github.com/sadhakbj/Typing" class = "menus"> Fork on GitHub </a>
 
@@ -165,9 +167,74 @@
 		</div>
 
 
-	<div class ="this" id="lessonClass"> <div>
+	<div class ="this" id="lessonClass"> </div>
 
+
+	<div id="container">
+		<ul id="keyboard">
+        <li class="symbol" id ="À"><span class="off">`</span><span class="on">~</span></li>
+        <li class="symbol" id="1"><span class="off">1</span><span class="on">!</span></li>
+        <li class="symbol" id="2"><span class="off">2</span><span class="on">@</span></li>
+        <li class="symbol" id="3"><span class="off">3</span><span class="on">#</span></li>
+        <li class="symbol" id ="4"><span class="off">4</span><span class="on">$</span></li>
+        <li class="symbol" id="5"><span class="off">5</span><span class="on">%</span></li>
+        <li class="symbol" id="6"><span class="off">6</span><span class="on">^</span></li>
+        <li class="symbol" id="7"><span class="off">7</span><span class="on">&amp;</span></li>
+        <li class="symbol" id="8"><span class="off">8</span><span class="on">*</span></li>
+        <li class="symbol" id="9"><span class="off">9</span><span class="on">(</span></li>
+        <li class="symbol" id="0"><span class="off">0</span><span class="on">)</span></li>
+        <li class="symbol" id ="½"><span class="off">-</span><span class="on">_</span></li>
+        <li class="symbol" id="»"><span class="off">=</span><span class="on">+</span></li>
+        <li class="delete lastitem" id = "bckspace">Back</li>
+        <li class="tab">tab</li>
+        <li id="Q">q</li>
+        <li id ="W" value = "ram">w</li>
+        <li id ="E">e</li>
+        <li id="R">r</li>
+        <li id="T">t</li>
+        <li id="Y">y</li>
+        <li id = "U">u</li>
+        <li id="I">i</li>
+        <li id="O">o</li>
+        <li id="P">p</li>
+        <li class="symbol" id ="Û" ><span class="off">[</span><span class="on">{</span></li>
+        <li class="symbol" id="Ý"><span class="off">]</span><span class="on">}</span></li>
+        <li class="symbol lastitem" id ="Ü"><span class="off">\</span><span class="on">|</span></li>
+        <li class="capslock">caps lock</li>
+        <li id ="A">a</li>
+        <li id = "S">s</li>
+        <li id = "D">d</li>
+        <li id = "F">f</li>
+        <li id = "G">g</li>
+        <li id= "H">h</li>
+        <li id = "J">j</li>
+        <li id = "K">k</li>
+        <li id = "L">l</li>
+        <li class="symbol" id ="º"><span class="off">;</span><span class="on">:</span></li>
+        <li class="symbol" id='Þ'><span class="off">'</span><span class="on">&quot;</span></li>
+        <li class="return lastitem" >Enter</li>
+        <li class="left-shift">shift</li>
+        <li id ="Z">z</li>
+        <li class="letter" id="X">x</li>
+        <li class="letter" id="C">c</li>
+        <li id="V">v</li>
+        <li id="B">b</li>
+        <li id="N">n</li>
+        <li id="M">m</li>
+        <li class="symbol" id= "¼"><span class="off">,</span><span class="on">&lt;</span></li>
+        <li class="symbol" id="¾"><span class="off">.</span><span class="on">&gt;</span></li>
+        <li class="symbol" id="¿"><span class="off">/</span><span class="on">?</span></li>
+        <li class="right-shift lastitem">shift</li>
+        <li class="space lastitem" id = "space">&nbsp; Spacebar</li>
+    </ul>
+
+	</div>
+
+
+	
 </div>
+
+
 
 
 	<script type="text/javascript">
@@ -262,7 +329,7 @@
 				};
 
 				//this function is used to highlight .. it will give hint for which letter to type
-			function highlight(cnt){
+			    function highlight(cnt){
 				//check on consoles you may see something interesting :P	
 				console.log('count is' +count);
 				console.log('cnt is' , +cnt);
@@ -272,6 +339,8 @@
 				{
 				var get = document.getElementById('span'+ cnt);
 				get.style.background = 'cyan';
+
+				
 				}
 				
 				};
@@ -306,12 +375,38 @@
 			}
 
 
+
+
 		//the very important part of the project .. on key down ..	
 		window.onkeydown = function(event){
 
-		
+		changeColor();
 
 		var hh = event.which;
+
+		function changeColor(){
+
+			var div =   String.fromCharCode(event.which);
+			 if(event.which === 32)
+            {
+                div = "space";
+            }
+
+            if(event.which === 8)
+            {
+                div = "bckspace";
+            }
+            var get = document.getElementById(div);
+            get.style.background = '#33aafa';
+
+            setTimeout(function (){
+                                
+            get.style.background = "#fee";
+
+                    },150);
+
+            };
+
 		if((hh > 47 && hh<58 ) || (hh > 64 && hh<91) || (hh > 96 && hh<123) || hh == 32)
 		{		
 			//we are now validating::
