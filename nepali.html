@@ -3,28 +3,135 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Making Some Sort of Typer</title>
+	<link rel="stylesheet" type="text/css" href="css/keyboard.css">
 	<style type="text/css">
 	*{
 		margin , padding: 0px;
 		
 		}
+
+		body{
+
+			background: cyan;
+
+		}
 		.wrapper{
 			margin: 0 auto;
 			border: 1px solid red;
-			height: auto;
-			width: auto;
-		}
-
-		.result{
-			width: auto;
-			height: auto;
-			background: cyan;
+			width: 940px;
+			height: 600px;			
 			
 		}
 
-		.this{
-			//this is holder for them
+		.header{
+			padding: 0px;
+			margin: 0px;
+			width: auto;
+			height: 70px;
+			background:#333;
+
+			color: white;
+			border-radius: 20px;
 		}
+
+		.logo{
+			float: left;
+			line-height:  70px;
+			font-size: 40px;
+			font-family: Brush Script MT;
+			margin-left: 20px;
+			margin-right: 20px; 
+			padding-right: 20px;
+			border-right: 1px solid white;
+			text-decoration: none;
+			color: #999;
+		}
+
+		.logo:hover{
+			color: white;
+			transition: background 0.7s linear 0s , color 0.7s linear 0s;
+		}
+
+		
+
+		.menus{
+			background: none;
+			margin-left: 10px;
+			margin-right: 10px;
+			font-size: 17px;
+			font-family:  Arial , Helvetica , sans-serif;
+			text-align: center;
+			display: block;
+			float: left;
+			padding-left: 10px;
+			padding-right: 10px;
+			margin-top: 20px;
+			line-height: 40px;
+			min-width: 100px;
+			height: 40px;	
+			text-decoration: none;
+			color: #999;
+		
+
+		}
+
+		.menus:hover{
+			/*background: #27A2E8;*/
+			background: #6F9A00;
+			border-radius: 10px;
+			color: white;
+			transition: background 0.7s linear 0s , color 0.7s linear 0s;
+
+		}
+
+		.result{
+			
+			width: 640px;
+			height: 40px;
+			margin: 0px auto;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			border-radius: 10px;
+			background: #333;
+			opacity: 0.8;
+			color: #999;
+			line-height: 40px;
+			
+			
+			
+		}
+		
+		li{
+			list-style: none;
+			float: left;
+			padding-left: 15px;
+			padding-right: 15px;
+			}
+
+		.list{
+			//we will just change the things on hover
+			}
+
+		.list:hover{
+			background: #6F9A00;
+			color: white;
+			transition: background 0.7s linear 0s , color 0.7s linear 0s;
+
+		}
+
+		.this{
+			// main holder which is holding the typing space i will make it advanced now wait for a while
+			margin-top: 20px;
+			background-color: white;
+			min-height: 60px;
+			border-radius: 15px;
+			font-size: 30px;
+			color: #4f4f4f;
+			padding: 20px;
+			text-align: center;
+
+		}
+
 
 
 
@@ -32,15 +139,95 @@
 
 </head>
 <body>
+	<div class = "wrapper">
+		<div class ="header">
+
+			<a class = "logo" href="https://www.facebook.com/sadhakbj" title="Bijaya Prasad Kuikel"> Prasad </a>
+			
+			<a href = "index.html" class = "menus"> English Typing </a>
+			<a  href= "#"class = "menus"> Game </a>
+			<a  href= "https://github.com/sadhakbj/Typing" class = "menus"> Fork on GitHub </a>
+
+
+			
+		</div>
+
 	<div class = "result">
-			Total Words: <span id="totalWords"> </span> <br>
-			Correct Words: <span id = "correct"> </span> <br>
-			Errors: <span id="err"> </span> <br>
-			Accuracy: <span id = "accuracy"></span>
+			<ul>
+				
+			<li class = "list">Characters: <span id="totalWords"> </span> </li>
+			<li class = "list"> Correct: <span id = "correct"> </span>  </li>
+			<li class = "list"> Errors: <span id="err"> </span>  </li>
+			<li class = "list"> Accuracy: <span id = "accuracy"></span> </li>
+			<li class = "list"> Time: <span id="time" class = "time"> 0 </span> secs</li>
+
+		</ul>
+
+		
 		</div>
 
 
 	<p class ="this" id="lessonClass"> </p>
+
+	<div id="container">
+		<ul id="keyboard">
+        <li class="symbol" id ="ञ"><span class="off">ञ/ञ्</span><span class="on">ञ</span></li>
+        <li class="symbol" id="१"><span class="off">ज्ञ/१</span><span class="on">!</span></li>
+        <li class="symbol" id="२"><span class="off">घ/२</span><span class="on">@</span></li>
+        <li class="symbol" id="३"><span class="off">ङ/३</span><span class="on">#</span></li>
+        <li class="symbol" id ="४"><span class="off">झ/४</span><span class="on">$</span></li>
+        <li class="symbol" id="५"><span class="off">छ/५</span><span class="on">%</span></li>
+        <li class="symbol" id="६"><span class="off">ट/६</span><span class="on">^</span></li>
+        <li class="symbol" id="७"><span class="off">ठ/७</span><span class="on">&amp;</span></li>
+        <li class="symbol" id="८"><span class="off">ड/८</span><span class="on">*</span></li>
+        <li class="symbol" id="९"><span class="off">ढ/९</span><span class="on">(</span></li>
+        <li class="symbol" id="०"><span class="off">ण/०</span><span class="on">)</span></li>
+        <li class="symbol" id =")"><span class="off">(/)</span><span class="on">_</span></li>
+        <li class="symbol" id="ं"><span class="off">./ं<span><span class="on">+</span></li>
+        <li class="delete lastitem" id = "bckspace">Back</li>
+        <li class="tab">tab</li>
+        <li id="त्र">त्र</li>
+        <li id ="ध" value = "ram">ध</li>
+        <li id ="भ">भ</li>
+        <li id="च">च</li>
+        <li id="त">त</li>
+        <li id="थ">थ</li>
+        <li id = "ग">ग</li>
+        <li id="ष">ष</li>
+        <li id="य">य</li>
+        <li id="उ">उ</li>
+        <li class="symbol" id ="ृ" ><span class="off">ृ</span><span class="on">ृ</span></li>
+        <li class="symbol" id="े"><span class="off">े</span><span class="on">े</span></li>
+        <li class="symbol lastitem" id ="Ü"><span class="off">्र</span><span class="on">|</span></li>
+        <li class="capslock">caps lock</li>
+        <li id ="ब">ब</li>
+        <li id = "क">क</li>
+        <li id = "म">म</li>
+        <li id = "ा">ा</li>
+        <li id = "न">न</li>
+        <li id= "ज">ज</li>
+        <li id = "व">व</li>
+        <li id = "प">प</li>
+        <li id = "ि">ि</li>
+        <li class="symbol" id ="स"><span class="off">स</span><span class="on">:</span></li>
+        <li class="symbol" id='ु'><span class="off">ु</span><span class="on">&quot;</span></li>
+        <li class="return lastitem" >Enter</li>
+        <li class="left-shift">shift</li>
+        <li id ="श">श</li>
+        <li class="letter" id="ह">ह</li>
+        <li class="letter" id="अ">अ</li>
+        <li id="ख">ख</li>
+        <li id="द">द </li>
+        <li id="ल">ल</li>
+        <li id="फ">फ</li>
+        <li class="symbol" id= ","><span class="off">,</span><span class="on">&lt;</span></li>
+        <li class="symbol" id="।"><span class="off">।</span><span class="on">&gt;</span></li>
+        <li class="symbol" id="र"><span class="off">र</span><span class="on">?</span></li>
+        <li class="right-shift lastitem">shift</li>
+        <li class="space lastitem" id = "space">&nbsp; Spacebar</li>
+    </ul>
+
+	</div>
 
 
 	<script type="text/javascript">
@@ -51,6 +238,7 @@
 	 	 var error = 0;
 	 	 var word;
 	 	 var matched = 0;
+	 	 var interval;
 	 	 
 
 	 	 function getRandomNumber(min, max) {
@@ -90,7 +278,7 @@
 		function generateWords() {
 
 			count = 0;
-			var lessons = ["क क क ख ख ख " , "१ १ २ २ २ ३ ४ ५ ६" , "काका मेरा राम्रा काका" , "जय श्री राम जय श्री राम जय श्री राम " , "सीता राम सीता राम", "ब ब ब क क क क म म म व प ि ि स व प ि स स बब कक"];
+			var lessons = ["क क क ख ख ख " ,"मेराे नाम िबजय हाे", "१ १ २ २ २ ३ ४ ५ ६" , "काका मेरा राम्रा काका" , "जय श्री राम जय श्री राम जय श्री राम " , "सीता राम सीता राम", "ब ब ब क क क क म म म व प ि ि स व प ि स स बब कक"];
 			var max = lessons.length;
 
 			var num = getRandomNumber(0 , max);
@@ -130,13 +318,7 @@
 
 			generateWords();
 			updateResult(matched , error , word.length);
-
-			
-
-
-						
-
-			
+			updateTime();
 
 			// console.log(word);
 
@@ -173,18 +355,58 @@
 				
 				
 			}
+
+				//there is a timer which is showing the time in seconds brother just increment the value
+			function updateTime(){
+				if (interval === undefined) {
+			    interval = window.setInterval(function(){
+			    var time = document.getElementsByClassName('time')[0];
+			    time.innerHTML = Number(time.innerHTML) +1;
+			    },1000),+"secs";
+
+			};
+			}
 		
 
 
 
 		window.onkeypress = function(event){
 
-			console.log('curent count is'+count);	
-    		var hh = event.which || event.keyCode;		
-    		//this is for highlighting the next
+			
+			changeColor();
+
+		var hh = event.which;
+
+		function changeColor(){
+
+			var div =   String.fromCharCode(event.which);
+			 if(event.which === 32)
+            {
+                div = "space";
+            }
+
+            if(event.which === 8)
+            {
+                div = "bckspace";
+            }
+            var get = document.getElementById(div);
+            get.style.background = '#33aafa';
+
+            setTimeout(function (){
+                                
+            get.style.background = "#fee";
+
+                    },150);
+
+            };
+
+
+
+
 			var cnt = count+1;
 			highlight(cnt);				   				
-
+				
+				
 
 					if((hh > 2308 && hh < 2417) || hh === 32)			
 
