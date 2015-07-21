@@ -4,137 +4,14 @@
 	<meta charset="UTF-8">
 	<meta charset="ISO-8859-1">
 	<title>Making Some Sort of Typer</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/keyboard.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
 	<style type="text/css">
 
-	*{
-		margin , padding: 0px;
-		
-		}
-
-		body{
-
-			background: cyan;
-
-		}
-		.wrapper{
-			margin: 0 auto;
-			border: 1px solid red;
-			width: 940px;
-			height: 600px;			
-			
-		}
-
-		.header{
-			padding: 0px;
-			margin: 0px;
-			width: auto;
-			height: 70px;
-			background:#333;
-
-			color: white;
-			border-radius: 20px;
-		}
-
-		.logo{
-			float: left;
-			line-height:  70px;
-			font-size: 40px;
-			font-family: Brush Script MT;
-			margin-left: 20px;
-			margin-right: 20px; 
-			padding-right: 20px;
-			border-right: 1px solid white;
-			text-decoration: none;
-			color: #999;
-		}
-
-		.logo:hover{
-			color: white;
-			transition: background 0.7s linear 0s , color 0.7s linear 0s;
-		}
 
 		
-
-		.menus{
-			background: none;
-			margin-left: 10px;
-			margin-right: 10px;
-			font-size: 17px;
-			font-family:  Arial , Helvetica , sans-serif;
-			text-align: center;
-			display: block;
-			float: left;
-			padding-left: 10px;
-			padding-right: 10px;
-			margin-top: 20px;
-			line-height: 40px;
-			min-width: 100px;
-			height: 40px;	
-			text-decoration: none;
-			color: #999;
-		
-
-		}
-
-		.menus:hover{
-			/*background: #27A2E8;*/
-			background: #6F9A00;
-			border-radius: 10px;
-			color: white;
-			transition: background 0.7s linear 0s , color 0.7s linear 0s;
-
-		}
-
-		.result{
-			
-			width: 640px;
-			height: 40px;
-			margin: 0px auto;
-			margin-top: 10px;
-			margin-bottom: 10px;
-			border-radius: 10px;
-			background: #333;
-			opacity: 0.8;
-			color: #999;
-			line-height: 40px;
-			
-			
-			
-		}
-		
-		li{
-			list-style: none;
-			float: left;
-			padding-left: 15px;
-			padding-right: 15px;
-			}
-
-		.list{
-			//we will just change the things on hover
-			}
-
-		.list:hover{
-			background: #6F9A00;
-			color: white;
-			transition: background 0.7s linear 0s , color 0.7s linear 0s;
-
-		}
-
-		.this{
-			// main holder which is holding the typing space i will make it advanced now wait for a while
-			margin-top: 20px;
-			background-color: white;
-			min-height: 60px;
-			border-radius: 15px;
-			font-size: 30px;
-			color: #4f4f4f;
-			padding: 20px;
-			text-align: center;
-
-		}
-
-
 
 	</style>
 
@@ -145,7 +22,7 @@
 
 			<a class = "logo" href="https://www.facebook.com/sadhakbj" title="Bijaya Prasad Kuikel"> Prasad </a>
 			
-			<a href = "nepali.html" class = "menus"> Nepali Typing </a>
+			<a href = "nepali.html" class = "menus"> नेपाली </a>
 			<a  href= "#"class = "menus"> Game </a>
 			<a  href= "https://github.com/sadhakbj/Typing" class = "menus"> Fork on GitHub </a>
 
@@ -234,6 +111,13 @@
 	
 </div>
 
+<div class = "footer">
+	<div class = "footer-content">
+		&copy Bijayananda (Bijaya Prasad Kuikel)  Leapfrog Technology Inc Training2015
+	</div>
+	
+</div>
+
 
 
 
@@ -279,8 +163,21 @@
 
 			count = 0;
 			//from this array we select any of these... this is temporary solution in future i may think new ideas ;)
-			var lessons = ["aa jj hu hu hu ww ee rr ww rr" ,
-			"main holder which is holding the typing space yes main holder which is holding the typing space i will make it advanced now wait for a while i will make it advanced now wait for a while", "asd asd asdf jkl jkl as as jk jk" , "my my my name is" , "i can do this"];
+			var lessons = [
+			"a s d j k l  a s d j k l  a s d j k l" ,
+			"aa ss dd ff jj kk ll aa ss dd ff jj kk ll" ,
+			"asd asd asd asdf asdf jkl jkl jkl jkl",
+			"qwerty qwerty uioop uiop uiop",
+			"learning is always a fun we love to learn we are happy",
+			"kathmandu university dhulikhel nepal",
+			"final project demo presentation at leapfrog technology inc",
+			"i am bijaya prasad kuikel bijayananda from kathmandu university i learnt so many things and today i 			completed this project i am really happy to learn this please tell me how are you feeling thank you"
+
+
+			];
+
+
+
 			var max = lessons.length;
 			//we need to get random number from the above array so pass the parameters
 			var num = getRandomNumber(0 , max);
@@ -380,6 +277,7 @@
 		//the very important part of the project .. on key down ..	
 		window.onkeydown = function(event){
 
+
 		changeColor();
 
 		var hh = event.which;
@@ -412,6 +310,9 @@
 			//we are now validating::
 			console.log(event.which);
 			var inputToNum = String.fromCharCode(hh).toLowerCase();
+
+
+
 			console.log(inputToNum);
 
 			// alert(word);

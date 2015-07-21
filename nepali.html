@@ -3,148 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Making Some Sort of Typer</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/keyboard.css">
-	<style type="text/css">
-	*{
-		margin , padding: 0px;
-		
-		}
-
-		body{
-
-			background: cyan;
-
-		}
-		.wrapper{
-			margin: 0 auto;
-			border: 1px solid red;
-			width: 940px;
-			height: 600px;			
-			
-		}
-
-		.header{
-			padding: 0px;
-			margin: 0px;
-			width: auto;
-			height: 70px;
-			background:#333;
-
-			color: white;
-			border-radius: 20px;
-		}
-
-		.logo{
-			float: left;
-			line-height:  70px;
-			font-size: 40px;
-			font-family: Brush Script MT;
-			margin-left: 20px;
-			margin-right: 20px; 
-			padding-right: 20px;
-			border-right: 1px solid white;
-			text-decoration: none;
-			color: #999;
-		}
-
-		.logo:hover{
-			color: white;
-			transition: background 0.7s linear 0s , color 0.7s linear 0s;
-		}
-
-		
-
-		.menus{
-			background: none;
-			margin-left: 10px;
-			margin-right: 10px;
-			font-size: 17px;
-			font-family:  Arial , Helvetica , sans-serif;
-			text-align: center;
-			display: block;
-			float: left;
-			padding-left: 10px;
-			padding-right: 10px;
-			margin-top: 20px;
-			line-height: 40px;
-			min-width: 100px;
-			height: 40px;	
-			text-decoration: none;
-			color: #999;
-		
-
-		}
-
-		.menus:hover{
-			/*background: #27A2E8;*/
-			background: #6F9A00;
-			border-radius: 10px;
-			color: white;
-			transition: background 0.7s linear 0s , color 0.7s linear 0s;
-
-		}
-
-		.result{
-			
-			width: 640px;
-			height: 40px;
-			margin: 0px auto;
-			margin-top: 10px;
-			margin-bottom: 10px;
-			border-radius: 10px;
-			background: #333;
-			opacity: 0.8;
-			color: #999;
-			line-height: 40px;
-			
-			
-			
-		}
-		
-		li{
-			list-style: none;
-			float: left;
-			padding-left: 15px;
-			padding-right: 15px;
-			}
-
-		.list{
-			//we will just change the things on hover
-			}
-
-		.list:hover{
-			background: #6F9A00;
-			color: white;
-			transition: background 0.7s linear 0s , color 0.7s linear 0s;
-
-		}
-
-		.this{
-			// main holder which is holding the typing space i will make it advanced now wait for a while
-			margin-top: 20px;
-			background-color: white;
-			min-height: 60px;
-			border-radius: 15px;
-			font-size: 30px;
-			color: #4f4f4f;
-			padding: 20px;
-			text-align: center;
-
-		}
-
-
-
-
-	</style>
-
-</head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
 <body>
 	<div class = "wrapper">
 		<div class ="header">
 
 			<a class = "logo" href="https://www.facebook.com/sadhakbj" title="Bijaya Prasad Kuikel"> Prasad </a>
 			
-			<a href = "index.html" class = "menus"> English Typing </a>
+			<a href = "index.html"  title = "English Tutor"class = "menus"> English</a>
 			<a  href= "#"class = "menus"> Game </a>
 			<a  href= "https://github.com/sadhakbj/Typing" class = "menus"> Fork on GitHub </a>
 
@@ -229,6 +98,16 @@
 
 	</div>
 
+</div>
+
+	<div class = "footer">
+	<div class = "footer-content">
+		&copy Bijayananda (Bijaya Prasad Kuikel)  Leapfrog Technology Inc Training2015
+	</div>
+	
+</div>
+
+
 
 	<script type="text/javascript">
 	;(function(){
@@ -278,7 +157,16 @@
 		function generateWords() {
 
 			count = 0;
-			var lessons = ["क क क ख ख ख " ,"मेराे नाम िबजय हाे", "१ १ २ २ २ ३ ४ ५ ६" , "काका मेरा राम्रा काका" , "जय श्री राम जय श्री राम जय श्री राम " , "सीता राम सीता राम", "ब ब ब क क क क म म म व प ि ि स व प ि स स बब कक"];
+			var lessons = ["ब क म ा व प ि स ब क म ा व प ि स ब क म ा व प ि स"
+			 , "ध भ च त थ ग ष य उ उ य ग ष य उ" , 
+			 "श ह अ ख द ल फ फ । ।" ,
+			 "बब कक मम मामा वव पप िि सस",
+			 "१ २ ३ ४ ५ ६ ७ ८ ९ ०",
+			 "काका पापा काका पापा मामा मामा िपिप िपिप",
+			 "मेराे नाम िबजय हाे ।"
+
+			];
+
 			var max = lessons.length;
 
 			var num = getRandomNumber(0 , max);
